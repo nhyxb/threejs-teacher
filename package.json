@@ -1,0 +1,13 @@
+{
+  "name": "three-study",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npm --prefix examples/cpu-cache run dev",
+    "dev:gears": "npm --prefix examples/gear-ratio run dev -- --port 5174",
+    "build:cpu": "npm --prefix examples/cpu-cache run build",
+    "build:gears": "npm --prefix examples/gear-ratio run build",
+    "test:cpu": "npm --prefix examples/cpu-cache test",
+    "test:gears": "npm --prefix examples/gear-ratio test"
+  }
+}

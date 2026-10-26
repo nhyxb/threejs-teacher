@@ -1,0 +1,27 @@
+# Dependencies and generated output
+node_modules/
+dist/
+coverage/
+*.log
+artifacts/
+.taste-skill/
+
+# Local agent context and tool configuration
+[Aa][Gg][Ee][Nn][Tt].[Mm][Dd]
+[Aa][Gg][Ee][Nn][Tt][Ss].[Mm][Dd]
+[Mm][Ee][Mm][Oo][Rr][Yy].[Mm][Dd]
+.agents/
+.codex/
+.aws/
+.env
+.env.*
+
+# Internal planning documents
+docs/PRD.md
+docs/Tech-Spec.md
+examples/*/docs/
+DESIGN.md
+
+# Operating-system files
+.DS_Store
+Thumbs.db

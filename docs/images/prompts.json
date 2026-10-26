@@ -1,0 +1,19 @@
+{
+  "generated_on": "2026-10-26",
+  "method": "built-in image_gen",
+  "purpose": "AI-generated conceptual illustrations for the bilingual GitHub README, not application screenshots.",
+  "assets": [
+    {
+      "file": "mechanism-lab-cover.webp",
+      "original_format": "PNG",
+      "repository_format": "WebP",
+      "prompt": "Use case: stylized-concept\nAsset type: wide GitHub README cover illustration for \"Mechanism Lab — Three.js Teacher\".\nPrimary request: a refined 3D educational illustration showing the project's two implemented subjects: a cutaway CPU with a visible processor core and small cache slots beside an orderly memory array, plus a pair of meshing spur gears.\nScene/backdrop: a single pale sage-grey tabletop with two separated compact demonstration assemblies, an off-white uncluttered background. No book, paper pages or monitor frame.\nStyle/medium: high-quality isometric 3D illustration, restrained matte materials, crisp geometric construction, subtle dark edge lines, soft directional daylight and contact shadows, close to a calm interactive scientific teaching model.\nComposition/framing: landscape about 2:1; the CPU/memory demonstration and two gears are both immediately recognizable, balanced in one cohesive composition with generous breathing room. Fully visible subjects, no clipping. Cover should remain readable at README width.\nColor palette: ivory and muted sage structural parts; teal data blocks and input gear; warm amber output gear and one restrained transfer path.\nConstraints: illustration only, no text, no letters or numbers, no code, no interface controls, no logos, no watermark, no neon, no glass dashboard. This is an honest conceptual cover, not a screenshot. Do not invent extra scientific equipment or people."
+    },
+    {
+      "file": "cpu-cache-concept.webp",
+      "original_format": "PNG",
+      "repository_format": "WebP",
+      "prompt": "Use case: scientific-educational\nAsset type: second GitHub README illustration, matching an ivory, pale sage and teal isometric 3D teaching project.\nPrimary request: a clean conceptual illustration of a CPU cache miss fetching a whole block of data, and the processor then receiving one requested element.\nScene/backdrop: uncluttered pale sage-grey experiment surface, landscape about 2:1.\nSubject/composition: viewed from above at a gentle isometric angle, arrange three clearly separated groups along one readable horizontal path. On the right, a small memory array with four rows of four teal data blocks. In the middle, a two-row cache tray with four slots per row; the top row holds four teal blocks, the bottom row is empty ivory recesses. On the left, one larger ivory processor-core tile on a compact chip base. Show exactly four small duplicate teal blocks traveling together above a restrained amber curved arrow from the memory array to the cache, then one small teal block on a short teal arrow from the cache toward the processor core. The original memory array must remain full, because fetching copies the data. Keep all groups and paths fully inside the frame with breathing room.\nStyle/medium: precise matte 3D educational sculpture, crisp geometry, subtle edge definition, soft daylight and contact shadows, calm and approachable, same visual family as a minimal Three.js educational scene.\nConstraints: no text, no letters, no numbers, no equations, no labels, no logos or watermark, no books, no UI window or controls, no neon glow, no ornamental particles. A conceptual illustration, not a photograph of real CPU circuitry or a claimed application screenshot."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {deriveGearState,predictionOptions} from './model';
+const p = {inputTeeth:12,outputTeeth:24,rpm:60,direction:1};
+const close=(a:number,b:number)=>assert.ok(Math.abs(a-b)<1e-9,`${a} ≠ ${b}`);
+test('12→24，60rpm 输入一秒一圈、输出反向半圈',()=>{const s=deriveGearState(p,1);assert.equal(s.outputRpm,-30);assert.equal(s.ratio,2);assert.equal(s.inputTurns,1);assert.equal(s.outputTurns,-.5);assert.equal(s.teethPassed,12);assert.equal(s.outputDirection,'逆时针')});
+test('等齿等速与大带小增速',()=>{assert.equal(deriveGearState({...p,outputTeeth:12},1).outputRpm,-60);assert.equal(deriveGearState({...p,inputTeeth:36,outputTeeth:12},1).outputRpm,-180)});
+test('零速无运动，反向翻转输出',()=>{const zero=deriveGearState({...p,rpm:0},9);assert.equal(zero.outputRpm,0);assert.equal(zero.outputAngle,0);assert.equal(zero.outputDirection,'停止');assert.equal(deriveGearState({...p,direction:-1},2).outputRpm,30)});
+test('不同齿数与方向都保持节圆线速和角位移约束',()=>{for(const a of [12,18,24,36])for(const b of [12,18,24,36])for(const d of [-1,1]){const s=deriveGearState({inputTeeth:a,outputTeeth:b,rpm:120,direction:d},1.37);close(s.inputRpm*s.inputRadius+s.outputRpm*s.outputRadius,0);close(s.inputAngle*a+s.outputAngle*b,0);close(s.outputX-s.inputX,s.inputRadius+s.outputRadius)}});
+test('时间往返、参数切换与重置完全确定',()=>{const first=deriveGearState(p,2.4);deriveGearState(p,8);deriveGearState({...p,outputTeeth:36},2.4);assert.deepEqual(deriveGearState(p,2.4),first);assert.equal(deriveGearState(p,0).teethPassed,0)});
+test('拒绝不合法输入',()=>{for(const bad of [{...p,inputTeeth:0},{...p,outputTeeth:12.5},{...p,rpm:NaN},{...p,rpm:-1},{...p,direction:0}])assert.throws(()=>deriveGearState(bad,1),RangeError);assert.throws(()=>deriveGearState(p,-1),RangeError);assert.throws(()=>deriveGearState(p,Infinity),RangeError)});
+test('预测选项在等齿、零转速和反向时仍有唯一正确答案且不重复',()=>{for(const q of [p,{...p,outputTeeth:12},{...p,rpm:0},{...p,direction:-1}]){const options=predictionOptions(deriveGearState(q,0));assert.equal(options.filter(o=>o.correct).length,1);assert.equal(new Set(options.map(o=>o.label)).size,options.length)}});
